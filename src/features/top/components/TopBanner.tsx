@@ -1,11 +1,14 @@
+import Tag from '@/features/common/components/Tag'
 import React from 'react'
+import { ArticleCardProps } from '../types/components'
+import SideMargin from '@/features/common/components/SideMargin'
 
 const TopBanner = ({ imgUrl, alt, date, children, tags }: ArticleCardProps) => {
   return (
-    <div className="w-full bg-black text-white justify-items-center">
-      <div className='w-8/12'> {/* 画面幅の調整部分 */}
+    <div className="bg-black text-white">
+      <SideMargin>
         <div className='w-full flex justify-between items-center'>
-          <div className='w-7/12'>
+          <div className='w-7/12 pr-4'>
             <h2 className="text-7xl font-bold py-1">
               New Article
             </h2>
@@ -13,7 +16,7 @@ const TopBanner = ({ imgUrl, alt, date, children, tags }: ArticleCardProps) => {
             <h3 className='text-3xl font-bold py-1'>{children}</h3>
             <div className='flex py-1 gap-5'>
               {tags.map((props) => (
-                <p className='text-base font-medium'>{props.label}</p>
+                <Tag>{props.children}</Tag>
               ))}
             </div>
           </div>
@@ -25,7 +28,7 @@ const TopBanner = ({ imgUrl, alt, date, children, tags }: ArticleCardProps) => {
             />
           </div>
         </div>
-      </div>
+      </SideMargin>
     </div>
   )
 }
