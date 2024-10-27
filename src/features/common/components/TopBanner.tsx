@@ -1,22 +1,24 @@
 import Tag from '@/features/common/components/Tag'
-import React from 'react'
-import { ArticleCardProps } from '../types/components'
-import SideMargin from '@/features/common/components/SideMargin'
+import React from "react";
 
-const TopBanner = ({ imgUrl, alt, date, children, tags }: ArticleCardProps) => {
+import SideMargin from './SideMargin'
+import { TopBannerProps } from '../types/components'
+
+
+const TopBanner = ({ sectionName, articleInfo :{imgUrl, alt, date, children, tags} }: TopBannerProps) => {
   return (
     <div className="bg-black text-white">
       <SideMargin>
         <div className='w-full flex justify-between items-center'>
           <div className='w-7/12 pr-4'>
             <h2 className="text-7xl font-bold py-1">
-              New Article
+              {sectionName}
             </h2>
             <p className='text-xl font-bold text-gray-400 py-1'>{date}</p>
-            <h3 className='text-3xl font-bold py-1'>{children}</h3>
+            <h2 className='text-3xl font-bold py-1'>{children}</h2>
             <div className='flex py-1 gap-5'>
-              {tags.map((props) => (
-                <Tag>{props.children}</Tag>
+              {tags.map((props, index) => (
+                <Tag key={index}>{props.children}</Tag>
               ))}
             </div>
           </div>

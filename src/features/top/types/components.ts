@@ -1,6 +1,6 @@
 import { TagProps } from "@/features/common/types/components";
 
-export interface ArticleCardProps {
+export interface TopBannerProps {
   imgUrl: string;
   alt: string;
   date: string;
