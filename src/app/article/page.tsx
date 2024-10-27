@@ -18,7 +18,7 @@ const page = () => {
           children: "【サンプル】サンプルサンプサンプルサプルサンプサンプル"
         }}
       />
-      <ArticleWrapper allContents="test" />
+      <ArticleWrapper allContents="" />
 
 
     </>
