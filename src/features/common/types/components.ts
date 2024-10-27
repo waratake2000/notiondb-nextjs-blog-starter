@@ -1,22 +1,33 @@
-interface HeaderProps {
+import { ReactNode } from "react";
+
+export interface HeaderProps {
   children: String;
   subText: String;
 }
 
-interface HeaderTitleProps {
+export interface HeaderProps {
   children: String;
   subText: String;
 }
 
-interface TagProps {
-  label: string;
+export interface TagProps {
+  children: string;
   url?: string | null;
 }
 
-interface TitleTextProps {
-  children: string;
+export interface SideMarginProps {
+	children: ReactNode
 }
 
-interface FooterProps {
-  
+export interface ArticleCardProps {
+  imgUrl: string;
+  alt: string;
+  date: string;
+  children: string;
+  tags: TagProps[];
+}
+
+export interface TopBannerProps {
+  sectionName?: string;
+  articleInfo: ArticleCardProps;
 }

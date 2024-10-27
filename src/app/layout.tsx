@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Inter, Noto_Sans_JP } from 'next/font/google'
+import SectionMargin from "@/features/top/components/SectionMargin";
+import Header from "@/features/common/components/Header";
+import Footer from "@/features/common/components/Footer";
 
 export const inter = Inter({
     subsets: ['latin'],
@@ -30,7 +33,14 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${notoSansJP.variable} antialiased`}
       >
+        <SectionMargin />
+        <Header subText={"SampletextSampletextSampletextSampletextSamplete"}>
+          Waratake Blog
+        </Header>
+        <SectionMargin />
         {children}
+        <SectionMargin />
+        <Footer />
       </body>
     </html>
   );

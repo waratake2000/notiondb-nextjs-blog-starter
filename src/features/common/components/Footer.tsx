@@ -1,12 +1,13 @@
 import React from 'react'
+import SideMargin from './SideMargin'
 
 const Footer = () => {
   const date = new Date().getFullYear()
   const nowYear = date.toString()
   
   return (
-    <footer className="w-full bg-black text-white justify-items-center">
-      <div className='w-8/12'>
+    <footer className="bg-black text-white">
+      <SideMargin>
         <div className='py-12'>
           <p className='py-1 text-lg font-semibold'>WARATAKE BLOG</p>
           <p className='text-xs font-extralight'>
@@ -17,7 +18,7 @@ const Footer = () => {
         <div className='py-6 w-full text-center'>
           <small className='text-xs font-extralight'>© {nowYear} Your Company Name. All rights reserved.</small>
         </div>
-      </div>
+      </SideMargin>
     </footer>
   )
 }

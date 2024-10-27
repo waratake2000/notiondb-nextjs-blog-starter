@@ -12,8 +12,8 @@ export const DemoArticleCard = () => (
     date={"2024 3 / 4"}
     tags={
       [
-        { label: "Docker"},
-        { label: "開発"}
+        { children: "Docker"},
+        { children: "開発"}
       ]
     }
   >
