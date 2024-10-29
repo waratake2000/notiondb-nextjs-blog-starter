@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Markdown, { Components } from 'react-markdown';
 import { Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { getAllPosts } from '../utils/notion';
 
 type ArticleContentProps = {
     allContents: string;
@@ -71,40 +72,40 @@ type ArticleContentProps = {
 // `;
 
 const components: Components = {
-    // h1: ({node,children, ...props}) => {
-    //     const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
-    //     return (
-    //         <SHeader1 {...props}>
-    //             <a id={title} >
-    //                 {children}
-    //             </a>
-    //         </SHeader1>
-    //     )
-    // },
-    // h2: ({node,children, ...props}) => {
-    //     const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
-    //     return (
-    //         <SHeader2 {...props}>
-    //             <a id={title} >
-    //                 {children}
-    //             </a>
-    //         </SHeader2>
-    //     )
-    // },
-    // h3: ({node,children, ...props}) => {
-    //     const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
-    //     return (
-    //         <SHeader3 {...props}>
-    //             <a id={title} >
-    //                 {children}
-    //             </a>
-    //         </SHeader3>
-    //     )
-    // },
-    // p: ({node, ...props}) => <Sp {...props} />,
-    // ul: ({node, ...props}) => <SUl {...props} />,
-    // ol: ({node, ...props}) => <SOl {...props} />,
-    // img: ({src}) => <ArticleImage src={src!} alt="再読み込みしてください" />,
+    h1: ({node,children, ...props}) => {
+        const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
+        return (
+            <h2 className='pt-10 pb-4 text-3xl font-extrabold border border' {...props}>
+                <a id={title} >
+                    {children}
+                </a>
+            </h2>
+        )
+    },
+    h2: ({node,children, ...props}) => {
+        const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
+        return (
+            <h3 className='text-2xl font-extrabold py-2' {...props}>
+                <a id={title} >
+                    {children}
+                </a>
+            </h3>
+        )
+    },
+    h3: ({node,children, ...props}) => {
+        const title = node?.children[0] && 'value' in node?.children[0] ? node?.children[0].value : '';
+        return (
+            <h4 className='text-xl font-bold py-2' {...props}>
+                <a id={title} >
+                    {children}
+                </a>
+            </h4>
+        )
+    },
+    p: ({node, ...props}) => <p className='text-base' {...props} />,
+    ul: ({node, ...props}) => <ul className='' {...props} />,
+    ol: ({node, ...props}) => <ol className='' {...props} />,
+    img: ({src}) => <img src={src!} alt="再読み込みしてください" />,
     code: ({...props}: any) => {
         console.log("props")
         console.log(props)
@@ -136,5 +137,19 @@ const ArticleWrapper: React.FC<ArticleContentProps> = ({allContents}) => {
     </>
   )
 }
+
+// const ArticleWrapper = () => {
+
+//   // useEffect(() => {
+//   //   const allPosts = getAllPosts()
+//   //   console.log(allPosts)
+//   // })
+
+//   return (
+//     <>
+//       <button>getAllPostsボタン</button>
+//     </>
+//   )
+// }
 
 export default ArticleWrapper

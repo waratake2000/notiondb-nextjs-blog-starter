@@ -5,8 +5,46 @@ import ArticleCard from "@/features/top/components/ArticleCard";
 import CardsWrapper from "@/features/top/components/CardsWrapper";
 import SectionMargin from "@/features/top/components/SectionMargin";
 import TopBanner from "@/features/common/components/TopBanner";
+import { getAllPosts } from "@/features/article/utils/notion";
+import { GetStaticProps } from "next";
+
+// export const getStaticPaths = async () => {
+//   const allPosts = await getAllPosts();
+//   console.log(allPosts)
+//   const paths = allPosts.map(({slug}) => ({ params: { slug }}));
+//   return {
+//       paths,
+//       fallback: "blocking",
+//   };
+// };
+
+// export const getStaticProps: GetStaticProps = async ({ params }: any) => {
+//   const post = await getSinglePost(params.slug);
+//   return {
+//       props: {
+//           post,
+//       },
+//       revalidate: 10,
+//       // revalidate: 1 * 60 * 60 * 12,
+//   };
+// };
+
+// export const getStaticProps: GetStaticProps = async () => {
+//   const post = await getAllPosts();
+//   console.log(post)
+//   return {
+//       props: {
+//           post,
+//       },
+//       revalidate: 10,
+//       // revalidate: 1 * 60 * 60 * 12,
+//   };
+// };
 
 export default function Home() {
+  const posts = getAllPosts()
+  console.log(posts)
+  
   return (
     <>
       <TopBanner

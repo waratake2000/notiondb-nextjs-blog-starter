@@ -14,7 +14,8 @@ const ArticleCard = ({ imgUrl, alt, date, children, tags }: ArticleCardProps) =>
         <div className='w-full'>
           <div className=''>
             <p className='text-base text-gray-400 font-bold p-1'>{date}</p>
-            <h4 className='text-2xl font-bold py-1 group-hover:underline'>{children}ああああああああああああああ
+            <h4 className='text-2xl font-bold py-1 group-hover:underline'>
+              {children}
             </h4>
           </div>
         </div>

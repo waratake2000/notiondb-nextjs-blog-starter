@@ -15,7 +15,7 @@ interface Tag {
 }
 
 const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
+    auth: process.env.REACT_APP_NOTION_TOKEN,
 });
 
 const n2m = new NotionToMarkdown({notionClient: notion});
@@ -36,15 +36,17 @@ const getTags = (tags: Array<Tag>) => {
 }
 
 export async function getAllPosts(): Promise<NotionPost[]> {
-    const posts = await notion.databases.query({
-        database_id: `${process.env.DATABASE_ID}`,
-        page_size: 100,
-    });
+  console.log(process.env.REACT_APP_DATABASE_ID)
+  const posts = await notion.databases.query({
+    database_id: `${process.env.REACT_APP_DATABASE_ID}`,
+    page_size: 100,
+  });
 
-    const allPosts = posts.results;
-    return allPosts.map((post: any) => {
-        return getPageMetaData(post);
-    });
+  const allPosts = posts.results;
+  console.log(allPosts)
+  return allPosts.map((post: any) => {
+      return getPageMetaData(post);
+  });
 }
 
 const getPageMetaData = (post: any) => {
@@ -60,9 +62,15 @@ const getPageMetaData = (post: any) => {
     };
 }
 
-export const getSinglePost = async (slug: string) => {
+// 出力の型定義をする
+interface SinglePost {
+    metadata: any;
+    markdown: string;
+}
+
+export const getSinglePost = async (slug: string): Promise<SinglePost> => {
     const response = await notion.databases.query({
-        database_id: `${process.env.DATABASE_ID}`,
+        database_id: `${process.env.REACT_APP_DATABASE_ID}`,
         filter: {
             property: "slug",
             formula: {
@@ -75,20 +83,16 @@ export const getSinglePost = async (slug: string) => {
 
     const page = response.results[0];
     const metadata = getPageMetaData(page);
-
-    // console.log("page.id")
-    // console.log(page.id)
+    
     const mdblocks = await n2m.pageToMarkdown(page.id);
-    // console.log("mdblocks")
-    // console.log(mdblocks)
     const mdString = n2m.toMarkdownString(mdblocks).parent;
 
+    // console.log("mdString")
+    // console.log(mdString)
+    // console.log(mdString)
 
     return {
-        metadata,
+        metadata: metadata,
         markdown: mdString
     }
-
-    // const mdBlocks = await n2m.page
-
 }

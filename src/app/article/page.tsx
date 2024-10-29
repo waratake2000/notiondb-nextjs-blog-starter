@@ -1,8 +1,16 @@
 import ArticleWrapper from '@/features/article/components/ArticleWrapper'
+import { getAllPosts, getSinglePost } from '@/features/article/utils/notion'
+import SideMargin from '@/features/common/components/SideMargin'
 import TopBanner from '@/features/common/components/TopBanner'
+import SectionMargin from '@/features/top/components/SectionMargin'
 import React from 'react'
 
-const page = () => {
+const page = async () => {
+  const post  = await getSinglePost("why-start-a-blog")
+  // console.log("post")
+  console.log(post.markdown)
+
+  
   return (
     <>
       <TopBanner
@@ -18,9 +26,13 @@ const page = () => {
           children: "【サンプル】サンプルサンプサンプルサプルサンプサンプル"
         }}
       />
-      <ArticleWrapper allContents="" />
-
-
+      {/* <SectionMargin /> */}
+      <SideMargin>
+        <ArticleWrapper
+          allContents={post.markdown}
+        />
+      </SideMargin>
+      {/* {articleMd} */}
     </>
   )
 }

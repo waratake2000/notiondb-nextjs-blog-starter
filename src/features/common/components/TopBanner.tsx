@@ -9,7 +9,7 @@ const TopBanner = ({ sectionName, articleInfo :{imgUrl, alt, date, children, tag
   return (
     <div className="bg-black text-white">
       <SideMargin>
-        <div className='w-full flex justify-between items-center'>
+        <div className='w-full flex justify-between'>
           <div className='w-7/12 pr-4'>
             <h2 className="text-7xl font-bold py-1">
               {sectionName}
